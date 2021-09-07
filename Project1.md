@@ -108,4 +108,4 @@ phpinfo();
 
 saved and closed the file and refreshed my EC2 public IP address
 
-![PHP page](https://user-images.githubusercontent.com/78991413/132395654-4ee87b1d-f16d-433f-afdf-385a23487c3c.png)
+![PHP page](https://user-images.githubusercontent.com/78991413/132395977-f153831d-4747-433e-a08e-933c1f482190.png)
