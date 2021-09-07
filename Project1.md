@@ -5,16 +5,20 @@ I signed into my AWS free tier account and launched a new EC2 instance using a t
 
 I then proceeded to SSH into my instance using MobaXterm client.
 *below is a screenshot of ssh being connected*
+
 ![ssh pic](https://user-images.githubusercontent.com/78991413/132376648-0efc5521-529f-43e3-8d6a-ebcc33477057.png)
 
 Next step was to install package update by running sudo apt update followed up installing apache by running sudo apt install apache2 -y to bypass the confirmation of installing apache
 To confirm Apache had been installed correctly i used the command sudo systemctl status apache2 *as confimred below*
+
 ![apache confirmation](https://user-images.githubusercontent.com/78991413/132378203-e845b7f8-4c8b-4451-a215-14f7f0efab88.png)
 
 below is the security groups i had opened.port 22 being for SSH and port 80 being for HTTP so i can access pages on the internet
+
 ![SG screenshot](https://user-images.githubusercontent.com/78991413/132386787-8ad2a10c-d1d0-43e5-8e1b-82e8539bac8c.png)
 
 Used the public IP address from my EC2 instance to confirm that my web server has been correctly installed
+
 ![apache default page](https://user-images.githubusercontent.com/78991413/132388085-637c99e2-c56d-406e-8bd3-db646bbac7c8.png)
 
 
@@ -23,6 +27,7 @@ I installed a Database Managment System so i can store & manage data for my site
 ran a security script that comes pre-installed with MySQL sudo mysql_secure_installation
 
 To test that it worked fine, i ran the command sudo mysql *as seen below*
+
 ![instal my sql](https://user-images.githubusercontent.com/78991413/132389301-97cfc002-9a46-401a-a25a-48649ce3d8c4.png)
 
 To exit the database i used mysql> exit
@@ -32,6 +37,7 @@ PHP is the component of our setup that will process code to display dynamic cont
 I installed the 3 packages by running the command sudo apt install php libapache2-mod-php php-mysql
 
 to confirm i ran php -v
+
 ![PHP confirmed](https://user-images.githubusercontent.com/78991413/132390288-2981f510-9766-429c-b05d-f23736ed060d.png)
 
 VIRTUAL HOST
@@ -42,6 +48,7 @@ Assigned ownership of the directory with your current system user using sudo cho
 Created and opened a new configuration file in Apache's sites available directory using sudo vi /etc/apache2/sites-available/projectlamp.conf
 
 This created a file in a text editor. press 'i' to insert text
+
 ![VI](https://user-images.githubusercontent.com/78991413/132391305-91def163-e4a9-4ca9-90a3-f2f980f6505f.png)
 
 To save and close the file, simply follow the steps below:
@@ -52,17 +59,21 @@ Type wq. w for write and q for quit
 Hit ENTER to save the file
 
 I entered the following command to show the new file in the sites available directory sudo ls /etc/apache2/sites-available
+
 ![sites available](https://user-images.githubusercontent.com/78991413/132391874-54a758d3-15f3-43a3-a96a-2514a792456f.png)
 
 Enabled new virtual host by using the command sudo a2ensite projectlamp
+
 ![site PL enabled](https://user-images.githubusercontent.com/78991413/132392412-dad29a96-6765-4a2d-b449-d00a18d44cc1.png)
 
 I disabled the default website that comes installed with Apache. This is required if you’re not using a custom domain name, because in this case Apache’s default configuration would overwrite your virtual host. To disable Apache’s default website use a2dissite command , type:
 
 sudo a2dissite 000-default Screen shot below showing Apache default website disabled
+
 ![disaabling default](https://user-images.githubusercontent.com/78991413/132392830-4b987225-8cc0-41b6-baee-00d7e6b0a7f0.png)
 
 To make sure your configuration file doesn’t contain syntax errors, run: sudo apache2ctl configtest
+
 ![0 syntax errors](https://user-images.githubusercontent.com/78991413/132393066-87b9f97e-1de2-4b71-9849-69f8b116e9a3.png)
 
 For the changes to take effect, i ran the command sudo systemctl reload apache2
@@ -96,4 +107,5 @@ Entered the text below
 phpinfo();
 
 saved and closed the file and refreshed my EC2 public IP address
+
 ![PHP page](https://user-images.githubusercontent.com/78991413/132395654-4ee87b1d-f16d-433f-afdf-385a23487c3c.png)
